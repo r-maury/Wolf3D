@@ -6,7 +6,7 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/09/17 16:52:37 by rmaury           ###   ########.fr        #
+#    Updated: 2015/09/28 19:51:43 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,10 @@ CCFLAGS =
 SRCDIR = src
 OBJDIR = obj
 INCDIR = includes
+LIBDIR = libft/libft.a
 
-SRC +=
+SRC +=		main.c
+SRC +=		map_select.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
@@ -26,7 +28,7 @@ INCS = $(addprefix -I , $(INCDIR))
 all: $(NAME)
 $(NAME): build $(OBJS)
 	@make -C libft
-	@gcc $(CCLIB) -o $(NAME) $(OBJS)
+	@gcc $(CCLIB) -o $(NAME) $(OBJS) $(INCS) $(LIBDIR)
 	@echo "Compilation Over"
 build:
 	@mkdir -p $(OBJDIR)
@@ -45,4 +47,4 @@ dev : all
 .PHONY: clean fclean all
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@gcc -c -g $(CCFLAGS) $(INCS) -I includes/ -o $@ $<
+	@gcc -c -g $(CCFLAGS) $(INCS) -I libft/includes -o $@ $<

@@ -6,44 +6,42 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/17 16:25:48 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/09/28 19:18:14 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
+#include "wolf3d.h"
 
-
-int	main()
+int		expose_hook(t_mlx *mlx)
 {
-	int x;
-	double x_pos;
-	double y_pos;
-	double x_dir;
-	double y_dir;
-	double x_plane;
-	double y_plane;
-	double time;
-	double prev_time;
-	void *mlx;
-	void *win;
+	return (0);
+}
 
-	x_pos = 1;
-	y_pos = 1;
-	x_dir = -1;
-	y_dir = 0;
-	x_plane = 0;
-	y_plane = 0.66;
-	time = 0;
-	prev_time = 0;
-	x = 0;
+int		key_hook(int keycode, t_mlx *mlx)
+{
+	(void)mlx;
+	if (keycode == 53)
+		exit(0);
+	return (0);
+}
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 600, "wolf3d");
-	// while (x < max)
-	// {
+int	main(int ac, char **av)
+{
+	t_mlx	mlx;
+	t_player	p;
 
-	// }
-	mlx_loop(mlx);
+	p.pos_x = 1;
+	p.pos_y = 1;
+	p.dir_x = -1;
+	p.dir_y = 0;
+	p.plane_x = 0;
+	p.plane_y = 0.66;
 
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 512, 384, "wolf3d");
+	p.map = map_select(1, mlx.mlx, mlx.win);
+	mlx_expose_hook(mlx.win, expose_hook, &mlx);
+	mlx_key_hook(mlx.win, key_hook, &mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 }
