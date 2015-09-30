@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/28 19:53:17 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/09/30 19:30:30 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int		**map_get(int fd)
 	char	*m;
 	int		i;
 	int		x;
+	int		n;
 	int		**map;
 	int		line;
 
-	i = 0;
 	x = 0;
 	line = 0;
 	m = "";
@@ -41,32 +41,25 @@ int		**map_get(int fd)
 		i++;
 	}
 	i = 0;
-	map = (int**)malloc(sizeof(int*) * line);
+	map = (int**)malloc(sizeof(int*) * line + 1);
 	line = 0;
 	while (m[i])
 	{
-		while (m[i] != '\n')
-		{
+		n = 0;
+		while (m[x + i] != '\n' && m[x + i])
 			x++;
-			i++;
-		}
-		i = 0;
+		printf("x = %d\n", x);
 		map[line] = (int*)malloc(sizeof(int) * x);
-		while (i < x)
+		while (n < x)
 		{
-			map[line][i] = ft_atoi(&m[i]);
+			if (m[i] == '1' || m[i] == '0')
+				map[line][n] = m[i] - '0';
+			n++;
 			i++;
 		}
-		x++;
-		i = x;
-		x = 0;
+		i++;
 		line++;
-	}
-	for(int i = 0; i < 24; i++)
-	{
-		for(int j = 0; j < 24; j++)
-			printf("%d ", map[i][j]);
-	printf("\n");
+		x = 0;
 	}
 	return (map);
 }
@@ -77,7 +70,6 @@ char	*make_path(char *path, int n)
 
 	nb = ft_itoa(n);
 	path = ft_strjoin("./maps/map", nb);
-
 	return (path);
 }
 

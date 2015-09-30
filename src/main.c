@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/28 19:18:14 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/09/30 16:49:18 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int ac, char **av)
 	p.dir_y = 0;
 	p.plane_x = 0;
 	p.plane_y = 0.66;
-
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 512, 384, "wolf3d");
 	p.map = map_select(1, mlx.mlx, mlx.win);
