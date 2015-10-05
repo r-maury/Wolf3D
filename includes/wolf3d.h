@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/28 18:43:15 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/05 00:46:20 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <math.h>
 # include "libft.h"
 
-int		**map_select(int n, void *mlx, void *win);
+
 
 typedef struct		s_mlx
 {
@@ -42,5 +43,8 @@ typedef struct		s_player
 	double	plane_x;
 	double	plane_y;
 }					t_player;
+
+int		**map_select(int n, void *mlx, void *win);
+void	draw_map(t_mlx *m, t_player *p);
 
 #endif

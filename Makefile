@@ -6,7 +6,7 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/09/28 19:51:43 by rmaury           ###   ########.fr        #
+#    Updated: 2015/10/05 00:39:54 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBDIR = libft/libft.a
 
 SRC +=		main.c
 SRC +=		map_select.c
+SRC +=		draw_map.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

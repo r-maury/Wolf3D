@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/30 16:49:18 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/05 01:55:53 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int ac, char **av)
 	t_mlx	mlx;
 	t_player	p;
 
-	p.pos_x = 1;
-	p.pos_y = 1;
+	p.pos_x = 5;
+	p.pos_y = 5;
 	p.dir_x = -1;
 	p.dir_y = 0;
 	p.plane_x = 0;
@@ -41,6 +41,7 @@ int	main(int ac, char **av)
 	p.map = map_select(1, mlx.mlx, mlx.win);
 	mlx_expose_hook(mlx.win, expose_hook, &mlx);
 	mlx_key_hook(mlx.win, key_hook, &mlx);
+	draw_map(&mlx, &p);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

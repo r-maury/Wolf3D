@@ -6,12 +6,11 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/09/30 19:30:30 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/02 19:58:57 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 int		**map_get(int fd)
 {
@@ -48,7 +47,6 @@ int		**map_get(int fd)
 		n = 0;
 		while (m[x + i] != '\n' && m[x + i])
 			x++;
-		printf("x = %d\n", x);
 		map[line] = (int*)malloc(sizeof(int) * x);
 		while (n < x)
 		{
