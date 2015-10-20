@@ -6,14 +6,13 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/05 01:49:42 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/14 18:51:07 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "wolf3d.h"
 
-void	draw_map(t_mlx *m, t_player *p)
+void	draw_map(t_mlx *m)
 {
 	int x;
 	int y;
@@ -45,56 +44,56 @@ void	draw_map(t_mlx *m, t_player *p)
 	while (x < w)
 	{
 		cam_x = (2 * x / (double)w) - 1;
-		rayp_y = p->pos_y;
-		rayp_x = p->pos_x;
-		rayd_y = p->dir_y + p->plane_y * cam_x;
-		rayd_x = p->dir_x + p->plane_x * cam_x;
+		rayp_y = m->p->pos_y;
+		rayp_x = m->p->pos_x;
+		rayd_y = m->p->dir_y + m->p->plane_y * cam_x;
+		rayd_x = m->p->dir_x + m->p->plane_x * cam_x;
 		hit = 0;
-		p->map_x = (int)rayp_x;
-		p->map_y = (int)rayp_y;
+		m->p->map_x = (int)rayp_x;
+		m->p->map_y = (int)rayp_y;
 		deltadist_x = sqrt(1 + (rayd_y * rayd_y) / (rayd_x * rayd_x));
 		deltadist_y = sqrt(1 + (rayd_x * rayd_x) / (rayd_y * rayd_y));
 		if (rayd_x < 0)
 		{
 			step_x = -1;
-			sidedist_x = (rayp_x - p->map_x) * deltadist_x;
+			sidedist_x = (rayp_x - m->p->map_x) * deltadist_x;
 		}
 		else
 			{
 				step_x = 1;
-				sidedist_x = (p->map_x + 1.0 - rayp_x) * deltadist_x;
+				sidedist_x = (m->p->map_x + 1.0 - rayp_x) * deltadist_x;
 			}
 		if (rayd_y < 0)
 		{
 			step_y = -1;
-			sidedist_y = (rayp_x - p->map_y) * deltadist_y;
+			sidedist_y = (rayp_x - m->p->map_y) * deltadist_y;
 		}
 		else
 		{
 			step_y = 1;
-			sidedist_y = (p->map_y + 1.0 - rayp_y) *deltadist_y;
+			sidedist_y = (m->p->map_y + 1.0 - rayp_y) *deltadist_y;
 		}
 		while (hit == 0)
 		{
 			if (sidedist_x < sidedist_y)
 			{
 				sidedist_x += deltadist_x;
-				p->map_x += step_x;
+				m->p->map_x += step_x;
 				side = 0;
 			}
 			else
 			{
 				sidedist_y += deltadist_y;
-				p->map_y += step_y;
+				m->p->map_y += step_y;
 				side = 1;
 			}
-			if (p->map[p->map_x][p->map_y] > 0)
+			if (m->p->map[m->p->map_x][m->p->map_y] > 0)
 				hit = 1;
 		}
 		if (side == 0)
-			perpwalldist = fabs((p->map_x - rayp_x + (1 - step_x) / 2) / rayd_x);
+			perpwalldist = fabs((m->p->map_x - rayp_x + (1 - step_x) / 2) / rayd_x);
 		else
-			perpwalldist = fabs((p->map_y - rayp_y + (1 - step_y) / 2) / rayd_y);
+			perpwalldist = fabs((m->p->map_y - rayp_y + (1 - step_y) / 2) / rayd_y);
 		line_h = abs((int)(h / perpwalldist));
 		draw_start = -line_h / 2 + h / 2;
 		draw_end = line_h / 2 + h / 2;
@@ -103,7 +102,6 @@ void	draw_map(t_mlx *m, t_player *p)
 		if (draw_end >= h)
 			draw_end = h - 1;
 		y = draw_start;
-		printf("h= %d perpwalldist = %f\n", h, perpwalldist);
 		while (y < draw_end)
 		{
 			color = 0xf2f2f2;

@@ -6,7 +6,7 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/10/05 00:39:54 by rmaury           ###   ########.fr        #
+#    Updated: 2015/10/20 10:33:05 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ CCFLAGS =
 SRCDIR = src
 OBJDIR = obj
 INCDIR = includes
-LIBDIR = libft/libft.a
+LIBDIR = Libft/libft.a
 
 SRC +=		main.c
 SRC +=		map_select.c
 SRC +=		draw_map.c
+SRC +=		move.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
@@ -28,16 +29,16 @@ INCS = $(addprefix -I , $(INCDIR))
 
 all: $(NAME)
 $(NAME): build $(OBJS)
-	@make -C libft
+	@make -C Libft
 	@gcc $(CCLIB) -o $(NAME) $(OBJS) $(INCS) $(LIBDIR)
 	@echo "Compilation Over"
 build:
 	@mkdir -p $(OBJDIR)
 clean:
-	@make -C libft clean
+	@make -C Libft clean
 	@rm -f $(OBJS)
 fclean: clean
-	@make -C libft fclean
+	@make -C Libft fclean
 	@rm -f $(NAME)
 	@rm -rf obj
 re: fclean all
@@ -48,4 +49,4 @@ dev : all
 .PHONY: clean fclean all
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@gcc -c -g $(CCFLAGS) $(INCS) -I libft/includes -o $@ $<
+	@gcc -c -g $(CCFLAGS) $(INCS) -I Libft/includes -o $@ $<
