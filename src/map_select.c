@@ -6,11 +6,12 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/02 19:58:57 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/27 11:07:51 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 int		**map_get(int fd)
 {
@@ -74,9 +75,13 @@ char	*make_path(char *path, int n)
 int		**map_select(int n, void *mlx, void *win)
 {
 	int		fd;
+	int		i;
+	int		j;
 	int		**map;
 	char	*path;
 
+	j = 0;
+	i = 0;
 	path = make_path(path, n);
 	fd = 0;
 	if ((fd = open(path, O_RDONLY)) < 0)

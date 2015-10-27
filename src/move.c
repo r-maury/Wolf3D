@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/20 15:44:17 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/27 11:15:15 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	move(t_mlx *m, int keycode)
 {
 	double	olddir_x;
 	double	oldplane_x;
-	m->p->ms = 0.5;
-	m->p->rs = 0.3;
+	m->p->ms = 10;
+	m->p->rs = 0.2;
 
 	if (keycode == U_ARROW || keycode == W)
 	{
@@ -62,6 +62,7 @@ void	move(t_mlx *m, int keycode)
 	}
 	if (keycode == D)
 	{
+		printf("%d\n", keycode);
 		if (m->p->map[(int)(m->p->pos_x + m->p->plane_x * m->p->ms)][(int)m->p->pos_y] == 0)
 			m->p->pos_x += m->p->plane_x * m->p->ms;
 		if (m->p->map[(int)(m->p->pos_x)][(int)(m->p->pos_y + m->p->plane_y * m->p->ms)] == 0)
