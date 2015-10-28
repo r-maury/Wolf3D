@@ -6,12 +6,11 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/27 11:07:51 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/28 17:11:00 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 int		**map_get(int fd)
 {

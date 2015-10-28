@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/27 11:14:18 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/28 17:10:48 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		expose_hook(t_mlx *mlx)
 
 int		key_hook(int keycode, t_mlx *mlx)
 {
-	printf("%d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	move(mlx, keycode);

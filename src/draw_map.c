@@ -6,11 +6,12 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/14 18:51:07 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/28 17:17:35 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 void	draw_map(t_mlx *m)
 {
@@ -59,19 +60,19 @@ void	draw_map(t_mlx *m)
 			sidedist_x = (rayp_x - m->p->map_x) * deltadist_x;
 		}
 		else
-			{
-				step_x = 1;
-				sidedist_x = (m->p->map_x + 1.0 - rayp_x) * deltadist_x;
-			}
+		{
+			step_x = 1;
+			sidedist_x = (m->p->map_x + 1.0 - rayp_x) * deltadist_x;
+		}
 		if (rayd_y < 0)
 		{
 			step_y = -1;
-			sidedist_y = (rayp_x - m->p->map_y) * deltadist_y;
+			sidedist_y = (rayp_y - m->p->map_y) * deltadist_y;
 		}
 		else
 		{
 			step_y = 1;
-			sidedist_y = (m->p->map_y + 1.0 - rayp_y) *deltadist_y;
+			sidedist_y = (m->p->map_y + 1.0 - rayp_y) * deltadist_y;
 		}
 		while (hit == 0)
 		{
@@ -87,7 +88,7 @@ void	draw_map(t_mlx *m)
 				m->p->map_y += step_y;
 				side = 1;
 			}
-			if (m->p->map[m->p->map_x][m->p->map_y] > 0)
+			if (m->p->map[m->p->map_x][m->p->map_y] == 1)
 				hit = 1;
 		}
 		if (side == 0)
@@ -111,7 +112,7 @@ void	draw_map(t_mlx *m)
 			y++;
 		}
 		if (draw_end < 0)
-			draw_end = 0;
+			draw_end = h;
 		y = draw_end;
 		while (y < h)
 		{
