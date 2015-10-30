@@ -6,7 +6,7 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/10/20 10:33:05 by rmaury           ###   ########.fr        #
+#    Updated: 2015/10/30 17:53:24 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC +=		main.c
 SRC +=		map_select.c
 SRC +=		draw_map.c
 SRC +=		move.c
+SRC +=		rotations.c
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

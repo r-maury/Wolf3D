@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/28 17:17:35 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/30 18:30:28 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,15 @@ void	draw_map(t_mlx *m)
 				hit = 1;
 		}
 		if (side == 0)
+		{
 			perpwalldist = fabs((m->p->map_x - rayp_x + (1 - step_x) / 2) / rayd_x);
+			side = (step_x < 0) ? 0 : 1;
+		}
 		else
+		{
 			perpwalldist = fabs((m->p->map_y - rayp_y + (1 - step_y) / 2) / rayd_y);
+			side = (step_y < 0) ? 2 : 3;
+		}
 		line_h = abs((int)(h / perpwalldist));
 		draw_start = -line_h / 2 + h / 2;
 		draw_end = line_h / 2 + h / 2;
@@ -108,6 +114,10 @@ void	draw_map(t_mlx *m)
 			color = 0xf2f2f2;
 			if (side == 1)
 				color = 0xCCCCCC;
+			if (side == 2)
+				color = 0xCC00FF;
+			if (side == 3)
+				color = 0xCC0033;
 			mlx_pixel_put(m->mlx, m->win, x, y, color);
 			y++;
 		}
@@ -116,8 +126,8 @@ void	draw_map(t_mlx *m)
 		y = draw_end;
 		while (y < h)
 		{
-			mlx_pixel_put(m->mlx, m->win, x, y, 0x006666);
-			mlx_pixel_put(m->mlx, m->win, x, h - y - 1, 0xcc0000);
+			mlx_pixel_put(m->mlx, m->win, x, y, 0x009933);
+			mlx_pixel_put(m->mlx, m->win, x, h - y - 1, 0xC8FAFF);
 			y++;
 		}
 		x++;

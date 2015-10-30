@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/20 11:47:17 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/10/30 18:23:30 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define S 1
 # define A 0
 # define D 2
+# define E 14
+# define Q 12
+# define WELLCOME "Wellcome To My Wolf3D"
 
 # include <mlx.h>
 # include <fcntl.h>
@@ -52,11 +55,16 @@ typedef struct		s_mlx
 	void			*mlx;
 	int				width;
 	int				heigh;
+	double			frame;
+	double			old_frame;
+	double			fps;
 	t_player		*p;
 }					t_mlx;
 
 int		**map_select(int n, void *mlx, void *win);
 void	draw_map(t_mlx *m);
+void	right_rot(t_mlx *m);
+void	left_rot(t_mlx *m);
 void	move(t_mlx *m, int keycode);
 
 #endif
