@@ -6,12 +6,13 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/30 18:30:28 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/03 17:59:11 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include <stdio.h>
+
 
 void	draw_map(t_mlx *m)
 {
@@ -38,8 +39,8 @@ void	draw_map(t_mlx *m)
 	double deltadist_y;
 	double perpwalldist;
 
-	w = 512;
-	h = 384;
+	w = 1200;
+	h = 800;
 	x = 0;
 	y = 0;
 	while (x < w)

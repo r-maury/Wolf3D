@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/03 17:19:43 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/04 16:47:31 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,27 @@ typedef struct		s_mlx
 {
 	void			*win;
 	void			*mlx;
-	void			*img;
-	int				endian;
-	int				bpp;
-	int				sizeline;
 	int				width;
 	int				heigh;
 	double			fps;
+	double			cam_x;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				line_h;
+	int				draw_start;
+	int				draw_end;
+	int				color;
+	double			rayp_x;
+	double			rayp_y;
+	double			rayd_x;
+	double			rayd_y;
+	double			sidedist_x;
+	double			sidedist_y;
+	double			deltadist_x;
+	double 			deltadist_y;
+	double			perpwalldist;
 	t_player		*p;
 }					t_mlx;
 
