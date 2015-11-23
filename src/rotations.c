@@ -6,11 +6,12 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 17:31:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/10/30 17:54:50 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/04 17:28:09 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 void	right_rot(t_mlx *m)
 {

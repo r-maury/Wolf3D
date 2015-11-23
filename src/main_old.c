@@ -18,23 +18,6 @@
 // 	ft_memcpy(&e->data[e->p], color, (e->bpp / 8));
 // }
 
-static void	init_wolf(t_mlx *mlx)
-{
-	mlx = (t_mlx*)malloc(sizeof(t_mlx));
-	mlx->p = (t_player*)malloc(sizeof(t_player));
-	mlx->width = 1200;
-	mlx->heigh = 800;
-	mlx->p->pos_x = 5;
-	mlx->p->pos_y = 5;
-	mlx->p->dir_x = -1;
-	mlx->p->dir_y = 0;
-	mlx->p->plane_x = 0;
-	mlx->p->plane_y = 0.66;
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->heigh, "wolf3d");
-	mlx->p->map = map_select(1, mlx->mlx, mlx->win);
-}
-
 int		expose_hook(t_mlx *mlx)
 {
 	return (0);
@@ -57,7 +40,19 @@ int		main(int ac, char **av)
 {
 	t_mlx	*mlx;
 
-	init_wolf(mlx);
+	mlx = (t_mlx*)malloc(sizeof(t_mlx));
+	mlx->p = (t_player*)malloc(sizeof(t_player));
+	mlx->width = 1200;
+	mlx->heigh = 800;
+	mlx->p->pos_x = 5;
+	mlx->p->pos_y = 5;
+	mlx->p->dir_x = -1;
+	mlx->p->dir_y = 0;
+	mlx->p->plane_x = 0;
+	mlx->p->plane_y = 0.66;
+	mlx->mlx = mlx_init();
+	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->heigh, "wolf3d");
+	mlx->p->map = map_select(1, mlx->mlx, mlx->win);
 	mlx_expose_hook(mlx->win, expose_hook, mlx);
 	mlx_hook(mlx->win, KEYPRESS, KEYPRESSMASK, key_hook, mlx);
 	// mlx_get_data_addr(mlx->img, mlx->&bpp, mlx->&sizeline, mlx->&endian);

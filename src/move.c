@@ -6,11 +6,12 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/02 17:43:13 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/04 17:25:32 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 void	forward(t_mlx *m)
 {
