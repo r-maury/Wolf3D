@@ -13,6 +13,25 @@
 #include "wolf3d.h"
 #include <stdio.h>
 
+static void	color(t_mlx *m, int y)
+{
+	if (y < m->draw_start)
+		m->color = mlx_get_color_value(m->mlx, 0x009933);
+	else if (y >= m->draw_start && y <= m->draw_end)
+	{
+		if (m->side == 0)
+			m->color = mlx_get_color_value(m->mlx, 0xf2f2f2);
+		if (m->side == 1)
+			m->color = mlx_get_color_value(m->mlx, 0xCCCCCC);
+		if (m->side == 2)
+			m->color = mlx_get_color_value(m->mlx, 0xCC00FF);
+		if (m->side == 3)
+			m->color = mlx_get_color_value(m->mlx, 0xCC0033);
+	}
+	else if	(y <= m->heigh && y > m->draw_end)
+		m->color = mlx_get_color_value(m->mlx, 0x009933);
+}
+
 static void	ft_rays(t_mlx *m)
 {
 	if (m->rayd_x < 0)
@@ -92,30 +111,28 @@ void	draw_map(t_mlx *m)
 			m->draw_start = 0;
 		if (m->draw_end >= m->heigh)
 			m->draw_end = m->heigh - 1;
-		y = m->draw_start;
-		while (y < m->draw_end)
+		color(m, y);
+		while (y < m->draw_start)
 		{
-			m->color = 0xf2f2f2;
-			if (m->side == 1)
-				m->color = 0xCCCCCC;
-			if (m->side == 2)
-				m->color = 0xCC00FF;
-			if (m->side == 3)
-				m->color = 0xCC0033;
-			mlx_pixel_put(m->mlx, m->win, x, y, m->color);
+			put_pixel_to_image(m, &m->color, x, y);
 			y++;
 		}
-		if (m->draw_end < 0)
-			m->draw_end = m->heigh;
-		y = m->draw_end;
-		while (y < m->heigh)
+		y = m->draw_start;
+		color(m, y);
+		while (y < m->draw_end)
 		{
-			mlx_pixel_put(m->mlx, m->win, x, y, 0x009933);
-			mlx_pixel_put(m->mlx, m->win, x, m->heigh - y - 1, 0xC8FAFF);
+			put_pixel_to_image(m, &m->color, x, y);
+			y++;
+		}
+		color(m, y);
+		while (y <= m->heigh)
+		{
+			put_pixel_to_image(m, &m->color, x, y);
 			y++;
 		}
 		x++;
 	}
+	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
 }
 
 

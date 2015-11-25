@@ -55,6 +55,12 @@ typedef struct		s_mlx
 {
 	void			*win;
 	void			*mlx;
+	void			*img;
+	int				pix;
+	int				sizeline;
+	int				bpp;
+	int				endian;
+	char			*data;
 	int				width;
 	int				heigh;
 	double			fps;
@@ -84,5 +90,6 @@ void	draw_map(t_mlx *m);
 void	right_rot(t_mlx *m);
 void	left_rot(t_mlx *m);
 void	move(t_mlx *m, int keycode);
+void	put_pixel_to_image(t_mlx *m, int *color, int x, int y);
 
 #endif
