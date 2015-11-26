@@ -52,7 +52,7 @@ int		key_hook(int keycode, t_mlx *mlx)
 
 int		expose_hook(t_mlx *mlx)
 {
-	// mlx_key_hook(mlx->win, key_hook, mlx);
+	mlx_key_hook(mlx->win, key_hook, mlx);
 	draw_map(mlx);
 	return (0);
 }

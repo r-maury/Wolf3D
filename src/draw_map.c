@@ -57,7 +57,6 @@ void	put_column_to_image(t_mlx *m, int x)
 	int	y;
 
 	y = 0;
-	printf("draw_start = %d\n draw_end = %d\n heigh = %d\n",m->draw_start, m->draw_end, m->heigh );
 	set_color(m, y);
 	while (y < m->draw_start)
 	{
@@ -134,7 +133,7 @@ void	draw_map(t_mlx *m)
 	x = 0;
 	while (x < m->width)
 	{
-		m->cam_x = (2 * x / (double)m->width) - 1;
+		m->cam_x = (2.0 * x / (double)m->width) - 1.0;
 		m->rayp_y = m->p->pos_y;
 		m->rayp_x = m->p->pos_x;
 		m->rayd_y = m->p->dir_y + m->p->plane_y * m->cam_x;
