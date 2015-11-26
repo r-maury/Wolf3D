@@ -12,16 +12,37 @@
 
 #include "wolf3d.h"
 
-static int	**fill_map_array(char *m, int line, int **map)
+int		**map_get(int fd)
 {
-	int	n;
-	int	x;
-	int	i;
+	char	buff[BUFF_SIZE + 1];
+	char	*m;
+	int		i;
+	int		x;
+	int		n;
+	int		**map;
+	int		line;
 
-	n = 0;
 	x = 0;
+	line = 0;
+	m = "";
+	while ((i = read(fd, buff, BUFF_SIZE)) != 0)
+	{
+		buff[i] = 0;
+		m = ft_strjoin(m, buff);
+	}
 	i = 0;
-		while (m[i])
+	while (m[i])
+	{
+		if (m[i] != '\n' && m[i] != '0' && m[i] != '1')
+			m[i] = '1';
+		if (m[i] == '\n')
+			line ++;
+		i++;
+	}
+	i = 0;
+	map = (int**)malloc(sizeof(int*) * line + 1);
+	line = 0;
+	while (m[i])
 	{
 		n = 0;
 		while (m[x + i] != '\n' && m[x + i])
@@ -41,48 +62,7 @@ static int	**fill_map_array(char *m, int line, int **map)
 	return (map);
 }
 
-static int	line_count(char *m)
-{
-	int	line;
-	int	i;
-
-	line = 0;
-	i = 0;
-		while (m[i])
-	{
-		if (m[i] != '\n' && m[i] != '0' && m[i] != '1' && m[i] != '2')
-			m[i] = '1';
-		if (m[i] == '\n')
-			line ++;
-		i++;
-	}
-	return (line);
-}
-
-int			**map_get(int fd)
-{
-	char	buff[BUFF_SIZE + 1];
-	char	*m;
-	int		i;
-	int		**map;
-	int		line;
-
-	line = 0;
-	m = "";
-	while ((i = read(fd, buff, BUFF_SIZE)) != 0)
-	{
-		buff[i] = 0;
-		m = ft_strjoin(m, buff);
-	}
-	i = 0;
-	line = line_count(m);
-	map = (int**)malloc(sizeof(int*) * line + 1);
-	line = 0;
-	map = fill_map_array(m, line, map);
-	return (map);
-}
-
-static char	*make_path(char *path, int n)
+char	*make_path(char *path, int n)
 {
 	char *nb;
 
@@ -91,7 +71,7 @@ static char	*make_path(char *path, int n)
 	return (path);
 }
 
-int			**map_select(int n, void *mlx, void *win)
+int		**map_select(int n, void *mlx, void *win)
 {
 	int		fd;
 	int		i;

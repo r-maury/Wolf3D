@@ -63,7 +63,7 @@ void	strafe_left(t_mlx *m)
 
 void	move(t_mlx *m, int keycode)
 {
-	m->p->ms = 0.3;
+	m->p->ms = 0.8;
 	m->p->rs = 0.2;
 	if (keycode == U_ARROW || keycode == W)
 		forward(m);
