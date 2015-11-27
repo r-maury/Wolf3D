@@ -15,56 +15,48 @@
 
 void	forward(t_mlx *m)
 {
-	if (m->p->map[(int)(m->p->pos_x + m->p->dir_x * m->p->ms)]
-		[(int)m->p->pos_y] == 0)
-		m->p->pos_x += m->p->dir_x * m->p->ms;
-	if (m->p->map[(int)m->p->pos_x][(int)(m->p->pos_y + m->p->dir_y *
-		m->p->ms)] == 0)
-		m->p->pos_y += m->p->dir_y * m->p->ms;
-	// mlx_clear_window(m->mlx, m->win);
-	// draw_map(m);
+	if (m->map[(int)(m->pos_x + m->dir_x * m->ms)]
+		[(int)m->pos_y] == 0)
+		m->pos_x += m->dir_x * m->ms;
+	if (m->map[(int)m->pos_x][(int)(m->pos_y + m->dir_y *
+		m->ms)] == 0)
+		m->pos_y += m->dir_y * m->ms;
 }
 
 void	backward(t_mlx *m)
 {
-	if (m->p->map[(int)(m->p->pos_x - m->p->dir_x * m->p->ms)]
-		[(int)m->p->pos_y] == 0)
-		m->p->pos_x -= m->p->dir_x * m->p->ms;
-	if (m->p->map[(int)m->p->pos_x][(int)(m->p->pos_y - m->p->dir_y *
-		m->p->ms)] == 0)
-		m->p->pos_y -= m->p->dir_y * m->p->ms;
-	// mlx_clear_window(m->mlx, m->win);
-	// draw_map(m);
+	if (m->map[(int)(m->pos_x - m->dir_x * m->ms)]
+		[(int)m->pos_y] == 0)
+		m->pos_x -= m->dir_x * m->ms;
+	if (m->map[(int)m->pos_x][(int)(m->pos_y - m->dir_y *
+		m->ms)] == 0)
+		m->pos_y -= m->dir_y * m->ms;
 }
 
 void	strafe_right(t_mlx *m)
 {
-	if (m->p->map[(int)(m->p->pos_x + m->p->plane_x * m->p->ms)]
-		[(int)m->p->pos_y] == 0)
-		m->p->pos_x += m->p->plane_x * m->p->ms;
-	if (m->p->map[(int)(m->p->pos_x)][(int)(m->p->pos_y + m->p->plane_y *
-		m->p->ms)] == 0)
-		m->p->pos_x += m->p->plane_x * m->p->ms;
-	// mlx_clear_window(m->mlx, m->win);
-	// draw_map(m);
+	if (m->map[(int)(m->pos_x + m->plane_x * m->ms)]
+		[(int)m->pos_y] == 0)
+		m->pos_x += m->plane_x * m->ms;
+	if (m->map[(int)(m->pos_x)][(int)(m->pos_y + m->plane_y *
+		m->ms)] == 0)
+		m->pos_x += m->plane_x * m->ms;
 }
 
 void	strafe_left(t_mlx *m)
 {
-	if (m->p->map[(int)(m->p->pos_x - m->p->plane_x * m->p->ms)]
-		[(int)m->p->pos_y] == 0)
-		m->p->pos_x -= m->p->plane_x * m->p->ms;
-	if (m->p->map[(int)(m->p->pos_x)][(int)(m->p->pos_y - m->p->plane_y *
-		m->p->ms)] == 0)
-		m->p->pos_x -= m->p->plane_x * m->p->ms;
-	// mlx_clear_window(m->mlx, m->win);
-	// draw_map(m);
+	if (m->map[(int)(m->pos_x - m->plane_x * m->ms)]
+		[(int)m->pos_y] == 0)
+		m->pos_x -= m->plane_x * m->ms;
+	if (m->map[(int)(m->pos_x)][(int)(m->pos_y - m->plane_y *
+		m->ms)] == 0)
+		m->pos_x -= m->plane_x * m->ms;
 }
 
 void	move(t_mlx *m, int keycode)
 {
-	m->p->ms = 0.8;
-	m->p->rs = 0.2;
+	m->ms = 0.8;
+	m->rs = 0.2;
 	if (keycode == U_ARROW || keycode == W)
 		forward(m);
 	if (keycode == D_ARROW || keycode == S)
@@ -77,4 +69,6 @@ void	move(t_mlx *m, int keycode)
 		strafe_right(m);
 	if (keycode == A)
 		strafe_left(m);
+	mlx_clear_window(m->mlx, m->win);
+	draw_map(m);
 }

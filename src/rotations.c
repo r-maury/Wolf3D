@@ -18,12 +18,12 @@ void	right_rot(t_mlx *m)
 	double	olddir_x;
 	double	oldplane_x;
 
-	olddir_x = m->p->dir_x;
-	m->p->dir_x = m->p->dir_x * cos(-m->p->rs) - m->p->dir_y * sin(-m->p->rs);
-	m->p->dir_y = olddir_x * sin(-m->p->rs) + m->p->dir_y * cos(-m->p->rs);
-	oldplane_x = m->p->plane_x;
-	m->p->plane_x = m->p->plane_x * cos(-m->p->rs) - m->p->plane_y * sin(-m->p->rs);
-	m->p->plane_y = oldplane_x * sin(-m->p->rs) + m->p->plane_y * cos(-m->p->rs);
+	olddir_x = m->dir_x;
+	m->dir_x = m->dir_x * cos(-m->rs) - m->dir_y * sin(-m->rs);
+	m->dir_y = olddir_x * sin(-m->rs) + m->dir_y * cos(-m->rs);
+	oldplane_x = m->plane_x;
+	m->plane_x = m->plane_x * cos(-m->rs) - m->plane_y * sin(-m->rs);
+	m->plane_y = oldplane_x * sin(-m->rs) + m->plane_y * cos(-m->rs);
 	mlx_clear_window(m->mlx, m->win);
 	draw_map(m);
 }
@@ -33,12 +33,12 @@ void	left_rot(t_mlx *m)
 	double	olddir_x;
 	double	oldplane_x;
 
-	olddir_x = m->p->dir_x;
-	m->p->dir_x = m->p->dir_x * cos(m->p->rs) - m->p->dir_y * sin(m->p->rs);
-	m->p->dir_y = olddir_x * sin(m->p->rs) + m->p->dir_y * cos(m->p->rs);
-	oldplane_x = m->p->plane_x;
-	m->p->plane_x = m->p->plane_x * cos(m->p->rs) - m->p->plane_y * sin(m->p->rs);
-	m->p->plane_y = oldplane_x * sin(m->p->rs) + m->p->plane_y * cos(m->p->rs);
+	olddir_x = m->dir_x;
+	m->dir_x = m->dir_x * cos(m->rs) - m->dir_y * sin(m->rs);
+	m->dir_y = olddir_x * sin(m->rs) + m->dir_y * cos(m->rs);
+	oldplane_x = m->plane_x;
+	m->plane_x = m->plane_x * cos(m->rs) - m->plane_y * sin(m->rs);
+	m->plane_y = oldplane_x * sin(m->rs) + m->plane_y * cos(m->rs);
 	mlx_clear_window(m->mlx, m->win);
 	draw_map(m);
 }

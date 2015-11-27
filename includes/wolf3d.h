@@ -35,20 +35,7 @@
 # include "libft.h"
 
 
-typedef struct		s_player
-{
-	int		**map;
-	int		map_x;
-	int		map_y;
-	double	ms;
-	double	rs;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-}					t_player;
+
 //ms = move speed
 //rs = rotation speed
 typedef struct		s_mlx
@@ -82,7 +69,17 @@ typedef struct		s_mlx
 	double			deltadist_x;
 	double 			deltadist_y;
 	double			perpwalldist;
-	t_player		*p;
+	int		**map;
+	int		map_x;
+	int		map_y;
+	double	ms;
+	double	rs;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }					t_mlx;
 
 int		**map_select(int n, void *mlx, void *win);
