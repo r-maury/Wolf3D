@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/04 16:46:54 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/30 17:03:23 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,19 @@ static void	init_wolf(t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->heigh, "wolf3d");
 	mlx->map = map_select(1, mlx->mlx, mlx->win);
+	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->heigh);
+	mlx->data = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->sizeline, &mlx->endian);
 }
 
 int		key_hook(int keycode, t_mlx *mlx)
 {
+	if (keycode)
+		printf("%d\n", keycode);
 	if (keycode == 53)
 	{
-		// free(mlx->map);
-		// free(mlx);
+		free(mlx->map);
+		mlx_destroy_image(mlx->mlx, mlx->img);
+		mlx_destroy_window(mlx->mlx, mlx->win);
 		exit(0);
 	}
 	move(mlx, keycode);
@@ -50,7 +55,7 @@ int		key_hook(int keycode, t_mlx *mlx)
 int		expose_hook(t_mlx *mlx)
 {
 	mlx_key_hook(mlx->win, key_hook, mlx);
-	// draw_map(mlx);
+	draw_map(mlx);
 	return (0);
 }
 
@@ -59,12 +64,9 @@ int		main(int ac, char **av)
 	t_mlx mlx;
 
 	init_wolf(&mlx);
-	mlx.img = mlx_new_image(mlx.mlx, mlx.width, mlx.heigh);
-	mlx.data = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.sizeline, &mlx.endian);
-	// mlx_expose_hook(mlx.win, expose_hook, &mlx);
+	mlx_expose_hook(mlx.win, expose_hook, &mlx);
 	mlx_hook(mlx.win, KEYPRESS, KEYPRESSMASK, key_hook, &mlx);
 	mlx_string_put(mlx.mlx, mlx.win, 150, 35, 65280, WELCOME);
-	draw_map(&mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

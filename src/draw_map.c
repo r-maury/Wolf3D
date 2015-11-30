@@ -6,19 +6,19 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/04 16:50:22 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/11/30 16:08:20 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include <stdio.h>
 
-void		set_color(t_mlx *m)
+void		set_color(t_mlx *m, int y)
 {
-	// if (y == 1)
-	// 	m->color = 39219;
-	// else if (y == 2)
-	// {
+	if (y < m->draw_start)
+		m->color = 39219;
+	else if (y >= m->draw_start && y < m->draw_end)
+	{
 		if (m->side == 0)
 			m->color = 15921906;
 		else if (m->side == 1)
@@ -27,9 +27,9 @@ void		set_color(t_mlx *m)
 			m->color = 13369599;
 		else if (m->side == 3)
 			m->color = 13369395;
-	// }
-	// else if	(y == 3)
-	// 	m->color = 3355545;
+	}
+	else if	(y >= m->draw_end && y < m->heigh)
+		m->color = 3355545;
 }
 
 void	wall_dist(t_mlx *m)
@@ -55,26 +55,24 @@ void	wall_dist(t_mlx *m)
 void	put_column_to_image(t_mlx *m, int x)
 {
 	int	y;
-	int sky;
-	int	floor;
 
 	y = 0;
-	sky = 3355545;
-	floor = 39219;
+	set_color(m, y);
 	while (y < m->draw_start)
 	{
-		put_pixel_to_image(m, &floor, x, y);
+		put_pixel_to_image(m, &m->color, x, y);
 		y++;
 	}
-	set_color(m);
+	set_color(m, y);
 	while (y < m->draw_end)
 	{
 		put_pixel_to_image(m, &m->color, x, y);
 		y++;
 	}
+	set_color(m, y);
 	while (y <= m->heigh)
 	{
-		put_pixel_to_image(m, &sky, x, y);
+		put_pixel_to_image(m, &m->color, x, y);
 		y++;
 	}
 }
