@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/30 17:54:35 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/01 13:32:27 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@
 # include <math.h>
 # include "libft.h"
 
-
-
-//ms = move speed
-//rs = rotation speed
 typedef struct		s_mlx
 {
 	void			*win;
@@ -67,26 +63,33 @@ typedef struct		s_mlx
 	double			sidedist_x;
 	double			sidedist_y;
 	double			deltadist_x;
-	double 			deltadist_y;
+	double			deltadist_y;
 	double			perpwalldist;
-	int		**map;
-	int		map_x;
-	int		map_y;
-	double	ms;
-	double	rs;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	int				**map;
+	int				map_x;
+	int				map_y;
+	double			ms;
+	double			rs;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 }					t_mlx;
 
-int		**map_select(int n, void *mlx, void *win);
-void	draw_map(t_mlx *m);
-void	right_rot(t_mlx *m);
-void	left_rot(t_mlx *m);
-void	move(t_mlx *m, int keycode);
-void	put_pixel_to_image(t_mlx *m, int *color, int x, int y);
+int					key_hook2(int keycode, t_mlx *mlx);
+int					key_hook(int keycode, t_mlx *mlx);
+int					expose_hook(t_mlx *mlx);
+int					**map_select(int n, void *mlx, void *win);
+void				set_heigh(t_mlx *m);
+void				wall_dist(t_mlx *m);
+void				ft_rays(t_mlx *m);
+void				optical_corrector(t_mlx *m);
+void				draw_map(t_mlx *m);
+void				right_rot(t_mlx *m);
+void				left_rot(t_mlx *m);
+void				move(t_mlx *m, int keycode);
+void				put_pixel_to_image(t_mlx *m, int *color, int x, int y);
 
 #endif

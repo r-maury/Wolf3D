@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/30 18:47:29 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/01 14:30:18 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 	if (!s2)
 		return ((char*)s1);
 	len = ft_strlen(s1) + ft_strlen(s2);
-	str = (char*)malloc(sizeof(char) * len + 1);
-	if (!str)
+	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	ft_strcpy(str, s1);
 	ft_strcat(str, s2);
@@ -69,7 +68,7 @@ static int	line_count(char *m)
 	i = 0;
 		while (m[i])
 	{
-		if (m[i] != '\n' && m[i] != '0' && m[i] != '1' && m[i] != '2')
+		if (m[i] != '\n' && m[i] != '0' && m[i] != '1')
 			m[i] = '1';
 		if (m[i] == '\n')
 			line ++;
@@ -86,12 +85,13 @@ static int	**map_get(int fd)
 	int		**map;
 	int		line;
 
-	m = ft_strdup(""); 
+	m = ft_strdup("");
 	while ((i = read(fd, buff, BUFF_SIZE)) != 0)
 	{
 		buff[i] = 0;
 		m = ft_strjoin_free(m, buff);
 	}
+	ft_putendl(m);
 	i = 0;
 	line = 0;
 	line = line_count(m);
@@ -102,9 +102,10 @@ static int	**map_get(int fd)
 	return (map);
 }
 
-static char	*make_path(char *path, int n)
+static char	*make_path(int n)
 {
 	char *nb;
+	char *path;
 
 	nb = ft_itoa(n);
 	path = ft_strjoin("./maps/map", nb);
@@ -122,7 +123,7 @@ int			**map_select(int n, void *mlx, void *win)
 
 	j = 0;
 	i = 0;
-	path = make_path(path, n);
+	path = make_path(n);
 	fd = 0;
 	if ((fd = open(path, O_RDONLY)) < 0)
 	{

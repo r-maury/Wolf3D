@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/11/04 17:25:32 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/01 13:29:48 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	strafe_left(t_mlx *m)
 
 void	move(t_mlx *m, int keycode)
 {
-	m->ms = 0.8;
-	m->rs = 0.2;
 	if (keycode == U_ARROW || keycode == W)
 		forward(m);
 	if (keycode == D_ARROW || keycode == S)
