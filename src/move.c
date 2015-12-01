@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 13:29:48 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/01 19:54:37 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	strafe_right(t_mlx *m)
 		m->pos_x += m->plane_x * m->ms;
 	if (m->map[(int)(m->pos_x)][(int)(m->pos_y + m->plane_y *
 		m->ms)] == 0)
-		m->pos_x += m->plane_x * m->ms;
+		m->pos_y += m->plane_y * m->ms;
 }
 
 void	strafe_left(t_mlx *m)
@@ -50,7 +50,7 @@ void	strafe_left(t_mlx *m)
 		m->pos_x -= m->plane_x * m->ms;
 	if (m->map[(int)(m->pos_x)][(int)(m->pos_y - m->plane_y *
 		m->ms)] == 0)
-		m->pos_x -= m->plane_x * m->ms;
+		m->pos_y -= m->plane_y * m->ms;
 }
 
 void	move(t_mlx *m, int keycode)
