@@ -6,11 +6,20 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:31:25 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 14:10:49 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/03 17:42:27 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "wolf3d.h"
+
+void	respawn(t_mlx *m)
+{
+	m->pos_x = m->spawn_x;
+	m->pos_y = m->spawn_y;
+	mlx_clear_window(m->mlx, m->win);
+	draw_map(m);
+}
 
 int		key_hook2(int keycode, t_mlx *mlx)
 {
@@ -21,6 +30,8 @@ int		key_hook2(int keycode, t_mlx *mlx)
 		else
 			mlx->ms = 0.5;
 	}
+	if (keycode == 17)
+		respawn(mlx);
 	return (0);
 }
 
@@ -41,5 +52,6 @@ int		expose_hook(t_mlx *mlx)
 {
 	mlx_key_hook(mlx->win, key_hook2, mlx);
 	draw_map(mlx);
+
 	return (0);
 }

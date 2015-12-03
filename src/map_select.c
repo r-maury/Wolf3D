@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 14:30:18 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/02 15:09:18 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static int	**map_get(int fd)
 		buff[i] = 0;
 		m = ft_strjoin_free(m, buff);
 	}
-	ft_putendl(m);
 	i = 0;
 	line = 0;
 	line = line_count(m);

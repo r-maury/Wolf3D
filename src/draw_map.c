@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 12:49:13 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/03 18:15:21 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,21 @@ void	put_column_to_image(t_mlx *m, int x)
 		y++;
 	}
 }
-
+static void	var_init(t_mlx *m, int x)
+{
+	m->cam_x = (2.0 * x / (double)m->width) - 1.0;
+	m->rayp_y = m->pos_y;
+	m->rayp_x = m->pos_x;
+	m->rayd_y = m->dir_y + m->plane_y * m->cam_x;
+	m->rayd_x = m->dir_x + m->plane_x * m->cam_x;
+	m->hit = 0;
+	m->map_x = (int)m->rayp_x;
+	m->map_y = (int)m->rayp_y;
+	m->deltadist_x = sqrt(1 + (m->rayd_y * m->rayd_y) /
+		(m->rayd_x * m->rayd_x));
+	m->deltadist_y = sqrt(1 + (m->rayd_x * m->rayd_x) /
+		(m->rayd_y * m->rayd_y));
+}
 void	draw_map(t_mlx *m)
 {
 	int x;
@@ -69,18 +83,7 @@ void	draw_map(t_mlx *m)
 	x = 0;
 	while (x < m->width)
 	{
-		m->cam_x = (2.0 * x / (double)m->width) - 1.0;
-		m->rayp_y = m->pos_y;
-		m->rayp_x = m->pos_x;
-		m->rayd_y = m->dir_y + m->plane_y * m->cam_x;
-		m->rayd_x = m->dir_x + m->plane_x * m->cam_x;
-		m->hit = 0;
-		m->map_x = (int)m->rayp_x;
-		m->map_y = (int)m->rayp_y;
-		m->deltadist_x = sqrt(1 + (m->rayd_y * m->rayd_y) /
-			(m->rayd_x * m->rayd_x));
-		m->deltadist_y = sqrt(1 + (m->rayd_x * m->rayd_x) /
-			(m->rayd_y * m->rayd_y));
+		var_init(m, x);
 		ft_rays(m);
 		wall_dist(m);
 		optical_corrector(m);
@@ -89,4 +92,9 @@ void	draw_map(t_mlx *m)
 		x++;
 	}
 	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
+	if ((int)m->pos_y == 22 && (int)m->pos_y == 22)
+	{
+	 	mlx_string_put(m->mlx, m->win, 500, m->heigh / 2, 65280, "This Maze is over Congratz");
+	 	mlx_string_put(m->mlx, m->win, 490, (m->heigh / 2) + 20, 65280, "Press n to go to the next lvl");
+	}
 }

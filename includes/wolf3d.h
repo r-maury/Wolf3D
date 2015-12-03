@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 13:32:27 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/02 15:41:04 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct		s_mlx
 	double			rs;
 	double			pos_x;
 	double			pos_y;
+	double			spawn_x;
+	double			spawn_y;
 	double			dir_x;
 	double			dir_y;
 	double			plane_x;

@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/01 19:54:37 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/03 17:48:23 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,10 @@ void	move(t_mlx *m, int keycode)
 	mlx_clear_window(m->mlx, m->win);
 	draw_map(m);
 }
+// map1
+// 	mlx->dir_x = 0.416147;
+// 	mlx->dir_y = 0.909297;
+// 	mlx->plane_x = 0.600136;
+// 	mlx->plane_y = -0.274657;
+// mlx->pos_x = 2;
+// mlx->pos_y = 2;
