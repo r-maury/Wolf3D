@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/03 18:15:21 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/03 18:18:45 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	put_column_to_image(t_mlx *m, int x)
 		y++;
 	}
 }
-static void	var_init(t_mlx *m, int x)
+
+static void	draw_var_init(t_mlx *m, int x)
 {
 	m->cam_x = (2.0 * x / (double)m->width) - 1.0;
 	m->rayp_y = m->pos_y;
@@ -76,6 +77,7 @@ static void	var_init(t_mlx *m, int x)
 	m->deltadist_y = sqrt(1 + (m->rayd_x * m->rayd_x) /
 		(m->rayd_y * m->rayd_y));
 }
+
 void	draw_map(t_mlx *m)
 {
 	int x;
@@ -83,7 +85,7 @@ void	draw_map(t_mlx *m)
 	x = 0;
 	while (x < m->width)
 	{
-		var_init(m, x);
+		draw_var_init(m, x);
 		ft_rays(m);
 		wall_dist(m);
 		optical_corrector(m);
