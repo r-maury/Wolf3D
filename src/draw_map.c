@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/03 18:18:45 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/04 11:48:08 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,5 @@ void	draw_map(t_mlx *m)
 		x++;
 	}
 	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
-	if ((int)m->pos_y == 22 && (int)m->pos_y == 22)
-	{
-	 	mlx_string_put(m->mlx, m->win, 500, m->heigh / 2, 65280, "This Maze is over Congratz");
-	 	mlx_string_put(m->mlx, m->win, 490, (m->heigh / 2) + 20, 65280, "Press n to go to the next lvl");
-	}
+	check_pos(m);
 }

@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/02 15:41:04 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/04 12:54:49 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,12 @@ typedef struct		s_mlx
 	double			dir_y;
 	double			plane_x;
 	double			plane_y;
+	int				init;
+	int				map_nb;
 }					t_mlx;
 
+void				init_wolf(t_mlx *mlx, int map_nb);
+// void				switch_map(t_mlx *mlx, int keycode);
 int					key_hook2(int keycode, t_mlx *mlx);
 int					key_hook(int keycode, t_mlx *mlx);
 int					expose_hook(t_mlx *mlx);
@@ -88,6 +92,7 @@ void				set_heigh(t_mlx *m);
 void				wall_dist(t_mlx *m);
 void				ft_rays(t_mlx *m);
 void				optical_corrector(t_mlx *m);
+void				check_pos(t_mlx *m);
 void				draw_map(t_mlx *m);
 void				right_rot(t_mlx *m);
 void				left_rot(t_mlx *m);
