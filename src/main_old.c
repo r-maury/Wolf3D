@@ -17,8 +17,39 @@ void	init_wolf(t_mlx *mlx)
 	mlx->width = 1200;
 	mlx->sizeline = mlx->width;
 	mlx->heigh = 800;
+	mlx->pos_x = 2;
+	mlx->pos_y = 2;
+	mlx->spawn_x = mlx->pos_x;
+	mlx->spawn_y = mlx->pos_y;
+	mlx->dir_x = -1;
+	mlx->dir_y = 0;
+	mlx->plane_x = 0;
+	mlx->plane_y = 0.66;
 	mlx->ms = 0.5;
 	mlx->rs = 0.2;
+}
+
+void	switch_map(t_mlx *mlx, int keycode)
+{
+
+	if (keycode == 83 || keycode == 18)
+		mlx->map_nb = 1;
+	else if (keycode == 84 || keycode == 19)
+		mlx->map_nb = 2;
+	else if (keycode == 85 || keycode == 20)
+		mlx->map_nb = 3;
+	else if (keycode == 86 || keycode == 21)
+		mlx->map_nb = 4;
+	if (mlx->init == 1)
+	{
+		mlx_clear_window(mlx->mlx, mlx->win);
+		mlx_destroy_image(mlx->mlx, mlx->img);
+		init_wolf(mlx);
+		free(mlx->map);
+		mlx->init = 0;
+	}
+	mlx->map = map_select(mlx);
+	draw_map(mlx);
 }
 
 int		main(int ac, char **av)
@@ -27,6 +58,7 @@ int		main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
+	mlx.init = 0;
 	init_wolf(&mlx);
 	if (!(mlx.mlx = mlx_init()))
 	{

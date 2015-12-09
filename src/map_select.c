@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/04 18:54:50 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/09 17:51:39 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,5 @@ int			**map_select(t_mlx *m)
 	map = map_get(fd);
 	close(fd);
 	free(path);
-	m->init = 1;
 	return (map);
 }
