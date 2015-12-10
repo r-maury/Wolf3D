@@ -6,13 +6,13 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:27:34 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/09 18:15:13 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/10 17:57:27 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void map_set_one(t_mlx *m)
+static void	map_set_one(t_mlx *m)
 {
 	m->map_nb = 1;
 	m->pos_x = 2;
@@ -28,7 +28,7 @@ static void map_set_one(t_mlx *m)
 	m->init = 1;
 }
 
-static void map_set_two(t_mlx *m)
+static void	map_set_two(t_mlx *m)
 {
 	m->map_nb = 2;
 	m->pos_x = 19;
@@ -44,7 +44,7 @@ static void map_set_two(t_mlx *m)
 	m->init = 1;
 }
 
-static void map_set_three(t_mlx *m)
+static void	map_set_three(t_mlx *m)
 {
 	m->map_nb = 3;
 	m->pos_x = 2;
@@ -60,7 +60,7 @@ static void map_set_three(t_mlx *m)
 	m->init = 1;
 }
 
-static void map_set_four(t_mlx *m)
+static void	map_set_four(t_mlx *m)
 {
 	m->map_nb = 4;
 	m->pos_x = 2;

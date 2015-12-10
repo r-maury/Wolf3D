@@ -6,13 +6,13 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/09 17:51:39 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/10 17:56:14 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int	**fill_map_array(char *m, int line, int **map)
+int			**fill_map_array(char *m, int line, int **map)
 {
 	int	n;
 	int	x;

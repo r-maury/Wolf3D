@@ -6,19 +6,19 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/09 17:39:13 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/10 17:47:47 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	put_pixel_to_image(t_mlx *m, int *color, int x, int y)
+void		put_pixel_to_image(t_mlx *m, int *color, int x, int y)
 {
 	m->pix = y * m->sizeline + (m->bpp / 8) * x;
 	ft_memcpy(&m->data[m->pix], color, (m->bpp / 8));
 }
 
-void	set_color(t_mlx *m, int y)
+void		set_color(t_mlx *m, int y)
 {
 	if (y < m->draw_start)
 		m->color = 3355545;
@@ -37,7 +37,7 @@ void	set_color(t_mlx *m, int y)
 		m->color = 39219;
 }
 
-void	put_column_to_image(t_mlx *m, int x)
+void		put_column_to_image(t_mlx *m, int x)
 {
 	int	y;
 
@@ -78,7 +78,7 @@ static void	draw_var_init(t_mlx *m, int x)
 		(m->rayd_y * m->rayd_y));
 }
 
-void	draw_map(t_mlx *m)
+void		draw_map(t_mlx *m)
 {
 	int x;
 

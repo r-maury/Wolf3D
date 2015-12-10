@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/05 15:37:20 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/10 17:55:10 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	init_wolf(t_mlx *mlx)
 int		main(int ac, char **av)
 {
 	t_mlx mlx;
+
 	(void)ac;
 	(void)av;
-
 	init_wolf(&mlx);
 	if (!(mlx.mlx = mlx_init()))
 	{

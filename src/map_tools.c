@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 16:44:24 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/09 16:24:02 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/10 17:58:40 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	line_count(char *m)
 	while (m[i])
 	{
 		if (m[i] == '\n')
-			line ++;
+			line++;
 		i++;
 	}
 	return (line);
@@ -70,7 +70,7 @@ int			**map_get(int fd)
 	return (map);
 }
 
-void		map_error()
+void		map_error(void)
 {
 	int	i;
 
