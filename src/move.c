@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/10 17:58:50 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/11 17:48:21 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ void	move(t_mlx *m, int keycode)
 		strafe_right(m);
 	if (keycode == A)
 		strafe_left(m);
-	mlx_clear_window(m->mlx, m->win);
 	draw_map(m);
 }

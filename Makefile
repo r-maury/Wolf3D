@@ -6,12 +6,12 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/12/09 16:16:24 by rmaury           ###   ########.fr        #
+#    Updated: 2015/12/11 17:16:53 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Wolf3d
-CCLIB = -L minilibx -lmlx -framework OpenGl -framework AppKit
+CCLIB = -L minilibx/ -lmlx -framework OpenGl -framework AppKit
 CCFLAGS = -Wall -Werror -Wextra
 SRCDIR = src
 OBJDIR = obj

@@ -6,37 +6,44 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 15:32:42 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/10 17:56:14 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/11 17:16:57 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+static int	col_count(char *m)
+{
+	int	i;
+
+	i = 0;
+	while (m[i] != '\n')
+		i++;
+	return (i);
+}
+
 int			**fill_map_array(char *m, int line, int **map)
 {
 	int	n;
-	int	x;
 	int	i;
+	int	col;
 
 	n = 0;
-	x = 0;
 	i = 0;
+	col = col_count(m);
 	while (m[i])
 	{
 		n = 0;
-		while (m[x + i] != '\n' && m[x + i])
-			x++;
-		map[line] = (int*)malloc(sizeof(int) * x);
-		while (n < x)
+		map[line] = (int*)malloc(sizeof(int) * col);
+		while (n < col && m[i])
 		{
 			if (m[i] == '1' || m[i] == '0')
-				map[line][n] = m[i] - '0';
+				map[line][n] = ft_chartoi(m[i]);
 			n++;
 			i++;
 		}
 		i++;
 		line++;
-		x = 0;
 	}
 	return (map);
 }
@@ -59,7 +66,6 @@ int			**map_select(t_mlx *m)
 	char	*path;
 
 	path = make_path(m->map_nb);
-	fd = 0;
 	if ((fd = open(path, O_RDONLY)) < 0)
 		map_error();
 	map = map_get(fd);

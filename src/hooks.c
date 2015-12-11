@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:31:25 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/10 17:52:10 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/11 17:47:26 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_pos(t_mlx *m)
 		if (m->map_nb != 4)
 			mlx_string_put(m->mlx, m->win, 490, 420, 65280, nxt);
 		else
-			mlx_string_put(m->mlx, m->win, 490, 420, 65280, win);
+			mlx_string_put(m->mlx, m->win, 430, 420, 65280, win);
 	}
 	free(nxt);
 }

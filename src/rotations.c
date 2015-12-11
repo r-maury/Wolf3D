@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 17:31:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/04 19:31:39 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/11 17:01:29 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	right_rot(t_mlx *m)
 	oldplane_x = m->plane_x;
 	m->plane_x = m->plane_x * cos(-m->rs) - m->plane_y * sin(-m->rs);
 	m->plane_y = oldplane_x * sin(-m->rs) + m->plane_y * cos(-m->rs);
-	mlx_clear_window(m->mlx, m->win);
-	draw_map(m);
 }
 
 void	left_rot(t_mlx *m)
@@ -39,6 +37,4 @@ void	left_rot(t_mlx *m)
 	oldplane_x = m->plane_x;
 	m->plane_x = m->plane_x * cos(m->rs) - m->plane_y * sin(m->rs);
 	m->plane_y = oldplane_x * sin(m->rs) + m->plane_y * cos(m->rs);
-	mlx_clear_window(m->mlx, m->win);
-	draw_map(m);
 }

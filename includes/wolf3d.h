@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/09 16:07:18 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/11 11:32:00 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void				switch_map(t_mlx *mlx, int keycode);
 int					key_hook2(int keycode, t_mlx *mlx);
 int					key_hook(int keycode, t_mlx *mlx);
 int					expose_hook(t_mlx *mlx);
-void				map_error();
+void				map_error(void);
 int					**fill_map_array(char *m, int line, int **map);
 int					**map_get(int fd);
 int					**map_select(t_mlx *m);
