@@ -6,16 +6,16 @@
 #    By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/22 17:47:23 by rmaury            #+#    #+#              #
-#    Updated: 2015/12/11 17:16:53 by rmaury           ###   ########.fr        #
+#    Updated: 2015/12/14 17:49:26 by rmaury           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Wolf3d
-CCLIB = -L minilibx/ -lmlx -framework OpenGl -framework AppKit
-CCFLAGS = -Wall -Werror -Wextra
+CCLIB = -L mlx/ -lmlx -framework OpenGl -framework AppKit
+CCFLAGS = -Wall -Werror -Wextra -g
 SRCDIR = src
 OBJDIR = obj
-INCDIR = includes
+INCDIR = includes/
 LIBDIR = Libft/libft.a
 
 SRC +=		main.c
@@ -54,4 +54,4 @@ dev : all
 .PHONY: clean fclean all
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@gcc -c -g $(CCFLAGS) $(INCS) -I Libft/includes -o $@ $<
+	@gcc -c $(CCFLAGS) $(INCS) -I Libft/includes -I mlx -I /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11/ -o $@ $<

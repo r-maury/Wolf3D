@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 16:58:16 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/14 18:03:47 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@ void	init_wolf(t_mlx *mlx)
 	mlx->sizeline = mlx->width;
 	mlx->heigh = 800;
 	mlx->ms = 0.5;
-	mlx->rs = 0.2;
+	mlx->rs = 0.1;
 }
 
 int		main(void)
 {
-	t_mlx mlx;
+	t_mlx *m;
 
-	init_wolf(&mlx);
-	if (!(mlx.mlx = mlx_init()))
+	m = (t_mlx*)malloc(sizeof(t_mlx));
+	init_wolf(m);
+	if (!(m->mlx = mlx_init()))
 	{
-		ft_putendl("mlx_init error");
-		exit(0);
+		ft_putendl_fd("mlx_init error", 2);
+		return (0);
 	}
-	mlx.win = mlx_new_window(mlx.mlx, mlx.width, mlx.heigh, "wolf3d");
-	mlx.img = mlx_new_image(mlx.mlx, mlx.width, mlx.heigh);
-	mlx.data = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.sizeline, &mlx.endian);
-	mlx_string_put(mlx.mlx, mlx.win, 500, 370, 65280, WELCOME);
-	mlx_string_put(mlx.mlx, mlx.win, 440, 400, 65280, PRESS);
-	mlx_string_put(mlx.mlx, mlx.win, 500, 430, 65280, ESC);
-	mlx_expose_hook(mlx.win, expose_hook, &mlx);
-	mlx_hook(mlx.win, KEYPRESS, KEYPRESSMASK, key_hook, &mlx);
-	mlx_loop(mlx.mlx);
+	m->win = mlx_new_window(m->mlx, m->width, m->heigh, "wolf3d");
+	m->img = mlx_new_image(m->mlx, m->width, m->heigh);
+	m->data = mlx_get_data_addr(m->img, &m->bpp, &m->sizeline, &m->endian);
+	mlx_string_put(m->mlx, m->win, 500, 370, 65280, WELCOME);
+	mlx_string_put(m->mlx, m->win, 440, 400, 65280, PRESS);
+	mlx_string_put(m->mlx, m->win, 500, 430, 65280, ESC);
+	mlx_expose_hook(m->win, expose_hook, m);
+	mlx_hook(m->win, KEYPRESS, KEYPRESSMASK, key_hook, m);
+	mlx_loop(m->mlx);
 	return (0);
 }

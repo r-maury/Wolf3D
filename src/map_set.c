@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:27:34 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 17:58:28 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/14 16:43:40 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void		switch_map(t_mlx *m, int key)
 {
 	if (m->init == 1 && key - 82 != m->map_nb && key - 17 != m->map_nb)
 		free(m->map);
-	m->init = 0;
 	if ((key == 83 || key == 18) && m->map_nb != 1)
 		map_set_one(m);
 	else if ((key == 84 || key == 19) && m->map_nb != 2)

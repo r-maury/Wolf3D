@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:31:25 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 17:47:26 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/14 15:51:20 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	respawn(t_mlx *m)
 {
 	m->pos_x = m->spawn_x;
 	m->pos_y = m->spawn_y;
-	mlx_clear_window(m->mlx, m->win);
 	draw_map(m);
 }
 
@@ -44,6 +43,7 @@ int		key_hook(int keycode, t_mlx *mlx)
 			free(mlx->map);
 		mlx_destroy_image(mlx->mlx, mlx->img);
 		mlx_destroy_window(mlx->mlx, mlx->win);
+		free(mlx);
 		exit(0);
 	}
 	if (mlx->init == 1)

@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 16:44:24 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 17:02:11 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/14 17:10:08 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ int			**map_get(int fd)
 	int		**map;
 	int		line;
 
-	m = ft_strdup("");
+	m = NULL;
 	while ((i = read(fd, buff, BUFF_SIZE)) != 0)
 	{
 		buff[i] = 0;
-		m = ft_strjoin_free(m, buff);
+		if (!m)
+			m = ft_strdup(buff);
+		else
+			m = ft_strjoin_free(m, buff);
 	}
 	i = 0;
 	line = 0;

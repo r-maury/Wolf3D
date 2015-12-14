@@ -6,11 +6,10 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/25 17:46:05 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 16:57:48 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/14 16:09:52 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "wolf3d.h"
 
 void		put_pixel_to_image(t_mlx *m, int *color, int x, int y)
