@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 11:06:43 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/14 18:03:47 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/18 18:13:28 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	init_wolf(t_mlx *mlx)
 	mlx->sizeline = mlx->width;
 	mlx->heigh = 800;
 	mlx->ms = 0.5;
-	mlx->rs = 0.1;
+	mlx->rs = 0.15;
+	mlx->map_nb = 1;
+	mlx->init = -1;
 }
 
 int		main(void)
@@ -36,7 +38,7 @@ int		main(void)
 	m->img = mlx_new_image(m->mlx, m->width, m->heigh);
 	m->data = mlx_get_data_addr(m->img, &m->bpp, &m->sizeline, &m->endian);
 	mlx_string_put(m->mlx, m->win, 500, 370, 65280, WELCOME);
-	mlx_string_put(m->mlx, m->win, 440, 400, 65280, PRESS);
+	mlx_string_put(m->mlx, m->win, 480, 400, 65280, PRESS);
 	mlx_string_put(m->mlx, m->win, 500, 430, 65280, ESC);
 	mlx_expose_hook(m->win, expose_hook, m);
 	mlx_hook(m->win, KEYPRESS, KEYPRESSMASK, key_hook, m);

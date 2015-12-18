@@ -6,12 +6,11 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 03:36:02 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/11 17:48:21 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/18 18:17:34 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 void	forward(t_mlx *m)
 {
@@ -21,6 +20,7 @@ void	forward(t_mlx *m)
 	if (m->map[(int)m->pos_x][(int)(m->pos_y + m->dir_y *
 		m->ms)] == 0)
 		m->pos_y += m->dir_y * m->ms;
+	draw_map(m);
 }
 
 void	backward(t_mlx *m)
@@ -31,6 +31,7 @@ void	backward(t_mlx *m)
 	if (m->map[(int)m->pos_x][(int)(m->pos_y - m->dir_y *
 		m->ms)] == 0)
 		m->pos_y -= m->dir_y * m->ms;
+	draw_map(m);
 }
 
 void	strafe_right(t_mlx *m)
@@ -41,6 +42,7 @@ void	strafe_right(t_mlx *m)
 	if (m->map[(int)(m->pos_x)][(int)(m->pos_y + m->plane_y *
 		m->ms)] == 0)
 		m->pos_y += m->plane_y * m->ms;
+	draw_map(m);
 }
 
 void	strafe_left(t_mlx *m)
@@ -51,6 +53,7 @@ void	strafe_left(t_mlx *m)
 	if (m->map[(int)(m->pos_x)][(int)(m->pos_y - m->plane_y *
 		m->ms)] == 0)
 		m->pos_y -= m->plane_y * m->ms;
+	draw_map(m);
 }
 
 void	move(t_mlx *m, int keycode)
@@ -67,5 +70,4 @@ void	move(t_mlx *m, int keycode)
 		strafe_right(m);
 	if (keycode == A)
 		strafe_left(m);
-	draw_map(m);
 }
