@@ -6,7 +6,7 @@
 /*   By: rmaury <rmaury@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/08 14:01:16 by rmaury            #+#    #+#             */
-/*   Updated: 2015/12/14 16:03:19 by rmaury           ###   ########.fr       */
+/*   Updated: 2015/12/16 17:13:13 by rmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define KEYPRESSMASK (1L<<0)
 # define KEYPRESS 2
 # define WELCOME "Welcome To Wolf3D"
-# define PRESS "Please press a key between 1 & 4"
+# define PRESS "Please press 1 to start"
 # define ESC "Or escape to quit"
 
 # include <mlx.h>
@@ -86,6 +86,7 @@ typedef struct		s_mlx
 	int				map_nb;
 }					t_mlx;
 
+int					is_win(t_mlx *m);
 void				init_wolf(t_mlx *mlx);
 void				switch_map(t_mlx *mlx, int keycode);
 int					key_hook2(int keycode, t_mlx *mlx);
