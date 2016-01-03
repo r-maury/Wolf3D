@@ -21,7 +21,7 @@ void	respawn(t_mlx *m)
 
 int		key_hook2(int keycode, t_mlx *mlx)
 {
-	if (keycode == 258)
+	if (keycode == 256)
 	{
 		if (mlx->ms == 0.5)
 			mlx->ms = 1;
