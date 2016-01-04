@@ -45,7 +45,7 @@ int		key_hook(int keycode, t_mlx *mlx)
 	if (keycode >= 83 && keycode <= 86)
 	{
 		switch_map(mlx, keycode);
-		if (mlx->init == 0 || mlx->init == -1)
+		if (mlx->init == 0 || (mlx->init == -1 && keycode == 83))
 		{
 			mlx->map = map_select(mlx);
 			draw_map(mlx);
